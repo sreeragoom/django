@@ -92,16 +92,15 @@ def add_movie(request):
     if request.method == 'POST':
         form = MovieForm(request.POST, request.FILES)
         if form.is_valid():
-            # Check if 'poster' key exists in the request.FILES dictionary
+        
             if 'poster' in request.FILES:
-                # Your existing code to process the form data
+                
                 # ...
                 form.save()
                 return HttpResponseRedirect('/')  # Redirect to success page
 
             else:
-                # Handle the case where 'poster' is missing in request.FILES
-                # For example, you can add an error message to the form
+                #  an error 
                 form.add_error('poster', 'Poster is required.')
         form.save()
     else:
